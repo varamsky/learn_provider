@@ -1,6 +1,12 @@
 # learn_provider
 
-A new Flutter project.
+Learn Provider State Management.
+
+## Issues
+
++ Problem with Navigation and Provider.
+    + For example, ExtraScreen() gets data from ExtraProvider but, for now it only works fine if ExtraProvider is wrapped above Material App. But what if you want to have ExtraProvider data to accessed by ExtraScreen() only, why should I make it accessible throughout the app scope??
+    + Couldn't find any solution to this issue!! 
 
 ## Getting Started
 
