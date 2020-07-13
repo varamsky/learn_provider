@@ -7,10 +7,12 @@ class ExtraScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // reference to ExtraProvider
     final extraProvider = Provider.of<ExtraProvider>(context, listen: false);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Check Screen'),),
+      appBar: AppBar(title: Text('Extra Screen'),),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.max,
@@ -18,10 +20,11 @@ class ExtraScreen extends StatelessWidget {
           Container(
             width: 150.0,
             height: 150.0,
-            color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-                .withOpacity(1.0),
+            color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
             child: Column(
               children: <Widget>[
+
+                // Consumer allows the wrapped widget to listen for any changes in the ExtraProvider
                 Consumer<ExtraProvider>(
                   builder: (BuildContext context,
                       ExtraProvider extraProvider, Widget child) {
@@ -36,23 +39,25 @@ class ExtraScreen extends StatelessWidget {
               ],
             ),
           ),
-          RaisedButton(
-            child: Icon(Icons.add),
-            color:
-            Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-                .withOpacity(1.0),
-            onPressed: () {
-              extraProvider.increment();
-            },
+          Tooltip(
+            message: 'Increase extraCounter',
+            child: RaisedButton(
+              child: Icon(Icons.add),
+              color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
+              onPressed: () {
+                extraProvider.increment();
+              },
+            ),
           ),
-          RaisedButton(
-            child: Icon(Icons.remove),
-            color:
-            Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-                .withOpacity(1.0),
-            onPressed: () {
-              extraProvider.decrement();
-            },
+          Tooltip(
+            message: 'Decrease extraCounter',
+            child: RaisedButton(
+              child: Icon(Icons.remove),
+              color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
+              onPressed: () {
+                extraProvider.decrement();
+              },
+            ),
           ),
         ],
       ),

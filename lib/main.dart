@@ -9,26 +9,29 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    // This doesn't work for the ExtraProvider, because Provider doesn't work across Navigation. Therefore, to make it work wrap it above the MaterialApp.
     /*return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter App',
+      title: 'Learn Provider',
       home: ChangeNotifierProvider<CounterProvider>(
         create: (BuildContext context) => CounterProvider(),
         child: HomeScreen(),
       ),
     );*/
 
-/*
-    return ChangeNotifierProvider<CounterProvider>(
+
+    // This is commented out because there are 2 providers so, MultiProvider should be used.
+    /*return ChangeNotifierProvider<CounterProvider>(
       create: (BuildContext context) => CounterProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter App',
+        title: 'Learn Provider',
         home: HomeScreen(),
       ),
-    );
-*/
+    );*/
 
+    // This works fine. MultiProvider for both the providers and wrapping it above MaterialApp makes it accessible across Navigation.push() .
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<CounterProvider>(
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter App',
+        title: 'Learn Provider',
         home: HomeScreen(),
       ),
     );

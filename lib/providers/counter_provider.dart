@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class CounterProvider extends ChangeNotifier{
-  int counter = 0;
-  double multiplier = 7;
+// CounterProvider implementation
+class CounterProvider extends ChangeNotifier{ // we can extend the ChangeNotifier class or else we can use with ChangeNotifier as a mixin.
+  int counter = 0; // initializing counter value to 0.
+  double multiplier = 7; // initializing multiplier value to 7.
 
   setCounter(int value){
     counter = value;
 
-    notifyListeners();
+    notifyListeners(); // it notifies all the listeners about the changes in the Provider.
   }
 
   increment(){
